@@ -36,13 +36,11 @@ pub mod variables_test {
     fn shadow() {
         // 当前block中，在内存中生成一份age，内存引用的值是24
         let age = 24;
-        age.is_positive();
         // 在内存中再生成一份age，内存引用的值为24.5
         // 因为内存中已经有同样的命名，所以顶掉了之前的age的内存地址和对应的值
         // 两个age除了名称一样，其余都不一样，内存、值都不同
         // 因为要涉及内存重新分配，性能要差于mut，mut只是修改内存引用的值，不涉及新的内存分配
         let age = 24.5;
-        age.abs();
         {
             // 当前block中age是25
             let age = 25;
