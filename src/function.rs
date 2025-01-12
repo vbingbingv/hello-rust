@@ -25,6 +25,8 @@ pub mod function_test {
         // 也就是实现了Copy trait的类型，被drop时没有任何效果
         // 任何一组简单标量值的组合都可以实现 Copy，任何不需要分配内存或某种形式资源的类型都可以实现 Copy
         // 比如数值类型（整数&浮点）、bool、char、数组、元组（必须所有属性都实现了Copy此元组才会实现Copy）、fn
+        // 官方解释
+        // 任何基本类型的组合可以 Copy ，不需要分配内存或某种形式资源的类型是可以 Copy 的
         let a = 5;
         let b = a;
         let c = String::from("123");
