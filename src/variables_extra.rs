@@ -19,7 +19,7 @@ pub mod variables_extra_test {
         println!("布尔 {} 占用了{}字节的内存大小", a, size_of_val(&a));
     }
     fn unit() {
-        // 单元类型也就是()，形似元组但并不是。可以理解为无意义的类型，类似TS的never
+        // 单元类型也就是()，是个没有长度的元组。可以理解为无意义的类型，类似TS的never
         // 比如main函数，返回的就是()
         // 没有返回值的方法被称为 发散函数(diverge function) 。
         let a: HashMap<u32, ()> = HashMap::new();
