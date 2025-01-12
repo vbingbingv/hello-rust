@@ -24,7 +24,7 @@ pub mod function_test {
         // 不允许自身或其任何部分实现了 Drop trait 的类型使用 Copy trait
         // 也就是实现了Copy trait的类型，被drop时没有任何效果
         // 任何一组简单标量值的组合都可以实现 Copy，任何不需要分配内存或某种形式资源的类型都可以实现 Copy
-        // 比如数值类型（整数&浮点）、bool、char、元组（必须所有属性都实现了Copy此元组才会实现Copy）、fn
+        // 比如数值类型（整数&浮点）、bool、char、数组、元组（必须所有属性都实现了Copy此元组才会实现Copy）、fn
         let a = 5;
         let b = a;
         let c = String::from("123");
