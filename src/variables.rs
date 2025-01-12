@@ -49,6 +49,8 @@ pub mod variables_test {
         println!("The age is {}", age);
     }
     pub fn run() {
+        // 字面量保存在只读数据区，&str是栈上的指针指向它而已
+        // 它的生命周期持续到程序结束，程序结束后，由操作系统回收内存。
         let a = "hello world";
     }
 }
