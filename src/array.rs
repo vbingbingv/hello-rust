@@ -2,12 +2,18 @@ pub mod array_test {
     use std::str::FromStr;
     // 从给定的arr中获取到对应索引的值
     // 关于生命周期使用后面再说。这里要加生命周期是因为
-    // @Doubt ? 下面这段解释不确定对不对，后面学习后再回头查看
+    // -@Doubt ? 下面这段解释不确定对不对，后面学习后再回头查看- 已解答
     // 结论
     // 数组实现了Copy trait，所以这里理论上是可以传入arr本身的，那么内部使用的就会是Copy后的arr
     // 但是返回中返回的是Copy后的arr的某项引用，此Copy后的arr在方法结束后就在栈中移除
     // 此时在 *1 处的代码的返回完成后，该Copy后的arr就会被释放
     // 所以此处必须只能获取到引用
+    // 扩展
+    // 这里为什么要传入数组的引用，数组本身就是可以Copy的，我返回Copy的某段引用也是可以的吧？
+    // 答案，这涉及到悬垂引用（Dangling Reference）
+    // 之前了解到，fn的参数被压入栈中，Copy的指针存放于栈中
+    // 在方法执行完成后，Copy的内存会被释放，如果返回该Copy的引用，会造成引用指向一段不存在的内存区域
+    // 这就是悬垂引用，是不允许的
     fn get_array_value<'a, Value>(arr: &'a [Value;3], index: &str) -> Option<&'a Value> {
         let number;
         // 第一种方式，用str的parse，转成设定的数值类型。需要注意对Result的处理
