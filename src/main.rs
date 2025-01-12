@@ -15,5 +15,5 @@ use variables_extra::variables_extra_test;
 use function::function_test;
 
 fn main() {
-    function_test::run();
+    array_test::run();
 }
